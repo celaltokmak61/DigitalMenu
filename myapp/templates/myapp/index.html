@@ -1,0 +1,26 @@
+{% extends 'myapp/base.html' %}
+{% load static %} 
+{% block title %}Celal{% endblock %}
+{% block content %} 
+<div class="container">
+   <div class="row">
+      {% for category in categories %} {% if category.active %} 
+      <div class="col-md-4 mt-4">
+         <div class="card">
+            <img class="card-img-top" src="{{ category.image.url }}" alt="{{ category.name }}" width="300" height="300">
+            <div class="card-body">
+               <h5 class="card-title">{{ category.name }}</h5>
+               <a href="{% url 'category_detail' category.slug %}" class="btn btn-primary">View Category</a>
+            </div>
+         </div>
+      </div>
+      {% endif %} {% endfor %} 
+   </div>
+</div>
+
+{% endblock %} 
+
+{% block extra_css %}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock %}
